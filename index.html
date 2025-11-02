@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己分析ノート - ホーム</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fa fa-book"></i></div>
+                <div class="logo-text">
+                    <h1>自己分析ノート</h1>
+                    <p>あなたの経験を見える化</p>
+                </div>
+            </a>
+
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link active"><i class="fa fa-home nav-icon"></i> ホーム</a>
+                <a href="mindmap.html" class="nav-link"><i class="fa fa-globe nav-icon"></i> マインドマップ</a>
+                <a href="selfpr.html" class="nav-link"><i class="fa fa-lightbulb nav-icon"></i> 自己PR生成</a>
+            </nav>
+
+            <nav class="nav-mobile">
+                <a href="index.html" class="nav-mobile-item active"><i class="fa fa-home nav-icon"></i> ホーム</a>
+                <a href="mindmap.html" class="nav-mobile-item"><i class="fa fa-globe nav-icon"></i> マインドマップ</a>
+                <a href="selfpr.html" class="nav-mobile-item"><i class="fa fa-lightbulb nav-icon"></i> 自己PR生成</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero">
+                <h2>あなたの経験を記録しよう</h2>
+                <p>日々の経験から、スキルと成長を可視化します</p>
+                <button id="addNewBtn" class="btn btn-primary btn-lg">
+                    <i class="fa fa-plus btn-icon"></i> 新しい経験を記録
+                </button>
+            </div>
+
+            <!-- Stats Section -->
+            <div id="statsSection" class="stats-grid" style="display: none;">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalExperiences">0</div>
+                    <div class="stat-label">記録した経験</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value stat-value-green" id="totalSkills">0</div>
+                    <div class="stat-label">獲得したスキル</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value stat-value-red" id="totalEmotions">0</div>
+                    <div class="stat-label">感じた感情</div>
+                </div>
+            </div>
+
+            <!-- Experiences Grid -->
+            <div id="experiencesContainer"></div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon-wrapper">
+                    <div class="empty-icon"><i class="fa fa-book"></i></div>
+                    <div class="empty-sparkle"><i class="fa fa-star"></i></div>
+                </div>
+                <h3>まだ経験が記録されていません</h3>
+                <p>日々の経験を記録して、あなたの成長を可視化しましょう。<br>AIが自動で分析してくれます。</p>
+                <button id="emptyAddBtn" class="btn btn-primary btn-lg">
+                    <i class="fa fa-lightbulb btn-icon"></i> 最初の経験を記録する
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="experienceModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">新しい経験を記録</h2>
+                <button class="modal-close" id="modalCloseBtn">&times;</button>
+            </div>
+            <form id="experienceForm">
+                <div class="form-group">
+                    <label for="experienceDate">日付</label>
+                    <input type="date" id="experienceDate" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="experienceContent">
+                        経験の内容
+                        <span class="label-hint">（自由に書いてください。AIが自動で分析します）</span>
+                    </label>
+                    <textarea id="experienceContent" class="form-textarea"
+                        placeholder="例：今日、プロジェクトのプレゼンテーションをチームで行いました。最初は緊張しましたが、メンバーと協力して無事に成功させることができました。"
+                        required></textarea>
+                    <p class="form-hint">できるだけ具体的に書くと、より正確な分析ができます</p>
+                </div>
+
+                <!-- AI Analysis Section -->
+                <div id="aiAnalysisSection" style="display: none;">
+                    <div class="analysis-loading">
+                        <div class="spinner"></div>
+                        <div>
+                            <p class="analysis-title">AI分析中...</p>
+                            <p class="analysis-subtitle">タイトル、感情、スキル、カテゴリーを自動抽出しています</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="extractedDataSection" style="display: none;">
+                    <div class="extracted-section">
+                        <label for="extractedTitle">タイトル</label>
+                        <input type="text" id="extractedTitle" class="form-input">
+                    </div>
+
+                    <div class="extracted-section">
+                        <label>カテゴリー（選択または追加）</label>
+                        <div id="categorySelection" class="tags-selection">
+                            <!-- 既存候補 -->
+                            <span class="tag category" data-value="学業">学業</span>
+                            <span class="tag category" data-value="アルバイト">アルバイト</span>
+                            <span class="tag category" data-value="部活動">部活動</span>
+                            <span class="tag category" data-value="趣味">趣味</span>
+                            <span class="tag category" data-value="ボランティア">ボランティア</span>
+                        </div>
+                        <input type="text" id="newCategoryInput" placeholder="新しいカテゴリーを追加">
+                        <button type="button" id="addCategoryBtn">追加</button>
+                    </div>
+
+
+                    <div class="extracted-section">
+                        <label>スキル（選択または追加）</label>
+                        <div id="skillsSelection" class="tags-selection"></div>
+                    </div>
+
+                    <div class="extracted-section">
+                        <label>感情（選択または追加）</label>
+                        <div id="emotionsSelection" class="tags-selection"></div>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" id="cancelBtn">キャンセル</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fa fa-lightbulb btn-icon"></i> <span id="submitBtnText">記録</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { setupEventListeners } from './scripts/home/events.js';
+        setupEventListeners();
+    </script>
+<!--
+    <script type="module" src="scripts/home/test2.js"></script>
+-->
+</body>
+
+</html>

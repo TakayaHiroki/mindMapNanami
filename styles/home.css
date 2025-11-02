@@ -1,0 +1,342 @@
+/* ページ余白 */
+.main-content {
+    padding: 1.25rem 0 6.5rem;
+}
+
+/* Hero */
+.hero {
+    border-radius: 12px;
+    padding: 2rem 1.25rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    color: #0b2730;
+    margin-bottom: 0.3rem;
+}
+
+.hero p {
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 1rem;
+}
+
+/* Stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.9rem;
+    margin-bottom: 1.4rem;
+}
+
+.stat-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 6px 18px rgba(11, 18, 24, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f1720;
+}
+
+.stat-label {
+    font-size: 0.87rem;
+    color: #667085;
+    margin-top: 0.35rem;
+}
+
+.stat-value-green {
+    color: #0f766e;
+}
+
+.stat-value-red {
+    color: #b91c1c;
+}
+
+/* Experiences Container */
+#experiencesContainer {
+    display: flex;
+    /* Flexbox */
+    flex-wrap: wrap;
+    /* 折り返し可能 */
+    justify-content: flex-start;
+    /* 左寄せ */
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+}
+
+/* Experience Card */
+.experience-item {
+    flex: 0 0 300px;
+    /* 固定幅 300px */
+    max-width: 100%;
+    /* 小画面時は縮小 */
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #edf3f6;
+    box-shadow: 0 3px 10px rgba(7, 12, 15, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    opacity: 0;
+    animation: fadeSlideIn 0.8s ease forwards;
+    position: relative;
+}
+
+.experience-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(7, 12, 15, 0.12);
+}
+
+.experience-title {
+    font-weight: 700;
+    color: #0b2730;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.experience-text {
+    padding: 0.5rem;
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.55;
+    border-top: #707070 dotted 2px;
+    border-bottom: #707070 dotted 2px;
+}
+
+.tags-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0.4rem;
+}
+
+.experiences-grid {
+    display: flex;
+    /* Flexbox */
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* 左寄せ */
+    gap: 1rem;
+}
+
+.tags-selection .tag {
+    font-size: 0.85rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    color: #344054;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+    border: 1px solid #eef6f6;
+    box-shadow: 0 8px 24px rgba(10, 18, 18, 0.02);
+}
+
+.empty-icon {
+    font-size: 2.6rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    animation: bounce 1.5s infinite;
+}
+
+.empty-sparkle {
+    font-size: 1rem;
+    position: relative;
+    top: -6px;
+    left: 6px;
+}
+
+/* AI Analysis Section */
+#aiAnalysisSection {
+    margin-top: 0.8rem;
+}
+
+.analysis-loading {
+    background: #fbfeff;
+    border: 1px solid #e6f5f3;
+    padding: 0.8rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.analysis-title {
+    font-weight: 700;
+    color: #0b2730;
+}
+
+.analysis-subtitle {
+    font-size: 0.87rem;
+    color: #64748b;
+}
+
+/* カード順番フェード＆スライド */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Empty State アイコン揺れ */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* モーダルスライド */
+.modal-content {
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.25s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.experience-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.4rem;
+}
+
+/* レスポンシブ */
+@media(max-width:768px) {
+
+    #experiencesContainer,
+    .experiences-grid {
+        flex-direction: column;
+        gap: 0.9rem;
+        padding: 0.3rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .experience-item {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+}
+
+/* タグ */
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0.125rem;
+}
+
+.tag.skill {
+    background: var(--color-skill-bg);
+    color: var(--color-skill-text);
+}
+
+.tag.emotion {
+    background: var(--color-emotion-bg);
+    color: var(--color-emotion-text);
+}
+
+.tag.category {
+    background: var(--color-cat-bg);
+    color: var(--color-cat-text);
+}
+
+.tag.category.selected {
+    background: var(--color-cat-text);
+    color: #ffffff;
+}
+
+/* デフォルトは選択禁止 */
+body {
+    user-select: none;
+}
+
+/* テキスト入力・コピーを許可 */
+input,
+textarea,
+.experience-text,
+.output-text {
+    user-select: text;
+}
+
+/* ナビゲーションやUI操作部分は選択禁止 */
+.header,
+.logo,
+.nav-desktop,
+.nav-mobile,
+.btn,
+.icon-btn,
+.stat-card,
+.empty-state,
+.tag,
+.modal-header,
+.modal-close {
+    user-select: none;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+}
+
+.stat-value-green {
+    font-size: 1.5rem;
+}
+
+.stat-value-red {
+    font-size: 1.5rem;
+}
+
+/* ホバー拡大・影 */
+.experience-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(7, 12, 15, 0.12);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

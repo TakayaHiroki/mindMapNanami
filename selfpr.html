@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己分析ノート - 自己PR生成</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/selfpr.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fa fa-book"></i></div>
+                <div class="logo-text">
+                    <h1>自己分析ノート</h1>
+                    <p>あなたの経験を見える化</p>
+                </div>
+            </a>
+
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link"><i class="fa fa-home nav-icon"></i> ホーム</a>
+                <a href="mindmap.html" class="nav-link"><i class="fa fa-globe nav-icon"></i> マインドマップ</a>
+                <a href="selfpr.html" class="nav-link active"><i class="fa fa-lightbulb nav-icon"></i> 自己PR生成</a>
+            </nav>
+
+            <nav class="nav-mobile">
+                <a href="index.html" class="nav-mobile-item"><i class="fa fa-home nav-icon"></i> ホーム</a>
+                <a href="mindmap.html" class="nav-mobile-item"><i class="fa fa-globe nav-icon"></i> マップ</a>
+                <a href="selfpr.html" class="nav-mobile-item active"><i class="fa fa-lightbulb nav-icon"></i>
+                    自己PR</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="hero">
+                <h1>自己PR生成</h1>
+                <p>あなたの経験から、説得力のある自己PRを自動生成します</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon-wrapper">
+                    <div class="empty-icon"><i class="fa fa-lightbulb"></i></div>
+                </div>
+                <h3>まだ経験が記録されていません</h3>
+                <p>自己PRを生成するには、まず経験を記録してください。</p>
+                <a href="index.html" class="btn btn-primary btn-lg">
+                    <i class="fa fa-plus btn-icon"></i> 経験を記録する
+                </a>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settingsSection" class="settings-section">
+                <div class="settings-card">
+                    <h2><i class="fa fa-cog"></i> 自己PR設定</h2>
+
+                    <div class="form-group">
+                        <label for="targetSkill">アピールしたいスキル</label>
+                        <select id="targetSkill" class="form-select">
+                            <option value="">スキルを選択してください</option>
+                        </select>
+                        <p class="form-hint">最も強調したいスキルを1つ選んでください</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prLength">文字数</label>
+                        <select id="prLength" class="form-select">
+                            <option value="short">短め（200-300字）</option>
+                            <option value="medium" selected>標準（300-400字）</option>
+                            <option value="long">長め（400-500字）</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prTone">トーン</label>
+                        <select id="prTone" class="form-select">
+                            <option value="formal" selected>フォーマル（就活向け）</option>
+                            <option value="casual">カジュアル（親しみやすい）</option>
+                            <option value="confident">自信満々（積極的）</option>
+                        </select>
+                    </div>
+
+                    <button id="generateBtn" class="btn btn-primary btn-lg btn-full">
+                        <i class="fa fa-magic btn-icon"></i> 自己PRを生成する
+                    </button>
+                </div>
+
+                <!-- Insights Card -->
+                <div class="insights-card">
+                    <h3><i class="fa fa-chart-line"></i> あなたの強み分析</h3>
+                    <div id="insightsContent">
+                        <div class="insight-item">
+                            <div class="insight-label">記録した経験</div>
+                            <div class="insight-value" id="totalExperiences">0</div>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label">獲得スキル</div>
+                            <div class="insight-value" id="totalSkills">0</div>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-label">トップスキル</div>
+                            <div class="insight-badge" id="topSkill">-</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-distribution">
+                        <h4>スキル出現頻度</h4>
+                        <div id="skillBars"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Section -->
+            <div id="resultSection" class="result-section" style="display: none;">
+                <div class="result-header">
+                    <h2><i class="fa fa-check-circle"></i> 生成された自己PR</h2>
+                    <button id="regenerateBtn" class="btn btn-outline">
+                        <i class="fa fa-redo"></i> 再生成
+                    </button>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-content">
+                        <div id="generatedPR" class="generated-text"></div>
+                        <div class="result-meta">
+                            <span class="char-count"><i class="fa fa-align-left"></i> <span
+                                    id="charCount">0</span>字</span>
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button id="copyBtn" class="btn btn-primary">
+                            <i class="fa fa-copy"></i> コピー
+                        </button>
+                        <button id="downloadBtn" class="btn btn-outline">
+                            <i class="fa fa-download"></i> テキスト保存
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Used Experiences -->
+                <div class="used-experiences">
+                    <h3><i class="fa fa-list"></i> 使用した経験</h3>
+                    <div id="usedExperiencesList" class="experiences-list"></div>
+                </div>
+
+                <!-- Tips -->
+                <div class="tips-card">
+                    <h3><i class="fa fa-lightbulb"></i> より良い自己PRにするヒント</h3>
+                    <ul class="tips-list">
+                        <li>具体的な数字や成果を追加すると説得力が増します</li>
+                        <li>「なぜそのスキルが必要だったか」という背景を加えましょう</li>
+                        <li>「今後どう活かしたいか」という展望を示すと効果的です</li>
+                        <li>複数パターン生成して、最も自分らしいものを選びましょう</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Loading -->
+            <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+                <div class="loading-content">
+                    <div class="spinner-large"></div>
+                    <p class="loading-title">自己PRを生成中...</p>
+                    <p class="loading-subtitle">あなたの経験を分析しています</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initSelfPR } from './scripts/selfpr/selfpr.js';
+        initSelfPR();
+    </script>
+</body>
+
+</html>

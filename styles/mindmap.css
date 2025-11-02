@@ -1,0 +1,455 @@
+/* ===== MindMap Specific Styles ===== */
+
+.hero {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.hero-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(to bottom right, #06b6d4, #3b82f6);
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--slate-800);
+    margin-bottom: 0.75rem;
+}
+
+.hero p {
+    font-size: 1.125rem;
+    color: var(--slate-600);
+}
+
+/* Mindmap Page Styles */
+
+.view-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.category-filter {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filter-header {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.filter-tag {
+    padding: 0.6rem 1.2rem;
+    background: #F3F4F6;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+    color: #4B5563;
+    font-weight: 500;
+}
+
+.filter-tag:hover {
+    background: #E5E7EB;
+    transform: translateY(-2px);
+}
+
+.filter-tag.active {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Mindmap Container - 基本スタイル */
+.mindmap-container {
+    transition: all 0.3s ease;
+}
+
+/* Mindmap Container - マップ表示用 */
+.mindmap-container.map-view {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    height: 80vh !important;
+    overflow: hidden !important; /* マップ表示時はスクロール無効 */
+}
+
+/* Mindmap Container - リスト表示用 */
+.mindmap-container.list-view {
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    height: auto !important; /* コンテンツに応じて高さを自動調整 */
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.mindmap-svg {
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.1s ease;
+    cursor: grab;
+}
+
+.mindmap-svg.dragging {
+    cursor: grabbing;
+}
+
+/* Ranking Container */
+.ranking-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.skill-ranking,
+.emotion-ranking {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.skill-ranking {
+    border-left: 4px solid #10B981;
+}
+
+.emotion-ranking {
+    border-left: 4px solid #F59E0B;
+}
+
+.skill-ranking h3,
+.emotion-ranking h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-ranking h3 {
+    color: #065F46;
+}
+
+.skill-ranking h3:before {
+    content: "🏆";
+    font-size: 1.5rem;
+}
+
+.emotion-ranking h3 {
+    color: #92400E;
+}
+
+.emotion-ranking h3:before {
+    content: "❤️";
+    font-size: 1.5rem;
+}
+
+.skill-ranking ol,
+.emotion-ranking ol {
+    list-style: none;
+    counter-reset: ranking;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-ranking li,
+.emotion-ranking li {
+    counter-increment: ranking;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: #F9FAFB;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s;
+    position: relative;
+    padding-left: 3rem;
+}
+
+.skill-ranking li:hover,
+.emotion-ranking li:hover {
+    background: #F3F4F6;
+    transform: translateX(4px);
+}
+
+.skill-ranking li:before,
+.emotion-ranking li:before {
+    content: counter(ranking);
+    position: absolute;
+    left: 0.75rem;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.skill-ranking li:before {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+}
+
+.emotion-ranking li:before {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: white;
+}
+
+.skill-ranking li:nth-child(1),
+.emotion-ranking li:nth-child(1) {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    font-weight: 600;
+}
+
+.count {
+    color: #6B7280;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* List View Cards */
+.mindmap-list-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s;
+    border-left: 4px solid #3B82F6;
+}
+
+.mindmap-list-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.mindmap-list-card h3 {
+    font-size: 1.3rem;
+    color: #1F2937;
+    margin-bottom: 0.75rem;
+}
+
+.card-category {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-content {
+    color: #4B5563;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #F9FAFB;
+    border-radius: 8px;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.tag.skill {
+    background: #DCFCE7;
+    color: #065F46;
+}
+
+.tag.emotion {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #6B7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ranking-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .filter-tags {
+        gap: 0.5rem;
+    }
+
+    .filter-tag {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .mindmap-container.map-view {
+        padding: 1rem;
+    }
+
+    .skill-ranking li,
+    .emotion-ranking li {
+        font-size: 0.9rem;
+        padding-left: 2.5rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   テキスト選択制御
+   ========================= */
+
+/* 全体は原則選択不可 */
+body {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ナビゲーション・ボタン・UI部品 */
+.header,
+.logo,
+.nav-desktop,
+.nav-mobile,
+.btn,
+.view-toggle button,
+.filter-tag,
+.ranking-container,
+.skill-ranking,
+.emotion-ranking {
+    user-select: none;
+}
+
+/* SVGマップ全体も選択不可 */
+.mindmap-svg {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 経験詳細モーダル内の本文はコピー可能 */
+.experience-detail p,
+.card-content {
+    user-select: text;
+}
+
+/* フィルタタグにカーソル */
+.filter-tag {
+    cursor: pointer;
+}
+
+/* ドラッグ中スタイル補助 */
+.mindmap-svg.dragging {
+    cursor: grab;
+}
+
+/* --- モーダル全体は原則選択禁止 --- */
+.experience-modal,
+.experience-modal * {
+    user-select: none;
+}
+
+/* --- 本文だけ選択可能に --- */
+.experience-modal p {
+    user-select: text;
+}
+
+/* --- タイトルや閉じるボタン、タグなどは選択禁止 --- */
+.experience-modal h2,
+.experience-modal button,
+.experience-modal span {
+    user-select: none;
+    cursor: default;
+}
+
+/* --- 補足メッセージなどは選択禁止 --- */
+.experience-modal .modal-hint {
+    user-select: none;
+    cursor: default;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding-bottom: 5vh;
+    }
+    
+    /* マップ表示時のみスクロール非表示 */
+    .mindmap-container.map-view {
+        overflow: hidden;
+    }
+}
+
+.center-map-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(6, 182, 212, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 10;
+}
+.center-map-btn:hover {
+    background: rgba(3, 105, 161, 1);
+    transform: scale(1.05);
+}
+.mindmap-container {
+    position: relative;
+    overflow: hidden;
+}

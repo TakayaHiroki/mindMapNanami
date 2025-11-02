@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己分析ノート - マインドマップ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/mindmap.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <!-- ロゴ部分 -->
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fa fa-book"></i></div>
+                <div class="logo-text">
+                    <h1>自己分析ノート</h1>
+                    <p>あなたの経験を見える化</p>
+                </div>
+            </a>
+
+            <!-- デスクトップナビ -->
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link"><i class="fa fa-home nav-icon"></i> ホーム</a>
+                <a href="mindmap.html" class="nav-link active"><i class="fa fa-globe nav-icon"></i> マインドマップ</a>
+                <a href="selfpr.html" class="nav-link"><i class="fa fa-lightbulb nav-icon"></i> 自己PR生成</a>
+            </nav>
+
+            <!-- モバイルナビ -->
+            <nav class="nav-mobile">
+                <a href="index.html" class="nav-mobile-item"><i class="fa fa-home nav-icon"></i> ホーム</a>
+                <a href="mindmap.html" class="nav-mobile-item active"><i class="fa fa-globe nav-icon"></i> マップ</a>
+                <a href="selfpr.html" class="nav-mobile-item"><i class="fa fa-lightbulb nav-icon"></i> 自己PR</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="main-content">
+        <div class="container">
+            <div class="hero">
+                <h1>マインドマップ</h1>
+                <p>あなたの経験を視覚的に整理します</p>
+            </div>
+
+            <div class="view-toggle">
+                <button id="mapViewBtn" class="btn btn-primary">マップ表示</button>
+                <button id="listViewBtn" class="btn btn-outline">リスト表示</button>
+            </div>
+
+            <div id="categoryFilter" class="category-filter" style="display:none;">
+                <div class="filter-header">カテゴリー</div>
+                <div id="filterTags" class="filter-tags"></div>
+            </div>
+
+            <div id="contentArea" class="mindmap-container">
+                <button id="centerMapBtn" class="center-map-btn" title="中心に戻す">
+                    <i class="fa fa-crosshairs"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { initMindMap } from './scripts/mindmap/mindmap.js';
+        initMindMap();
+    </script>
+</body>
+
+</html>

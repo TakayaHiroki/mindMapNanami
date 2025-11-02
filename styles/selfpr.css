@@ -1,0 +1,473 @@
+/* Settings Section */
+.settings-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.settings-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.settings-card h2 {
+    font-size: 1.5rem;
+    color: #1F2937;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.settings-card h2 i {
+    color: #3B82F6;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #E5E7EB;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.form-select:hover {
+    border-color: #3B82F6;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.btn-full {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Insights Card */
+.insights-card {
+    background: #fff;
+    border: 1px solid #e2e6ee;
+    border-radius: 16px;
+    padding: 2rem;
+    color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.insights-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.insights-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #2f3e58;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#insightsContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.insight-item {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 12px;
+    background: #f8f9fb;
+    border: 1px solid #e5e8f0;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.08);
+}
+
+.insight-item:hover {
+    background: #f0f4fa;
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.insight-label {
+    font-size: 0.85rem;
+    color: #5c6474;
+    margin-bottom: 0.4rem;
+}
+
+.insight-value {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #2d3a55;
+    line-height: 1.2;
+}
+
+.insight-badge {
+    background: #e9eef8;
+    color: #34435e;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 0.6rem;
+}
+
+/* Skill Distribution */
+.skill-distribution {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.103);
+}
+
+.skill-distribution h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+#skillBars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skill-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.skill-bar-label {
+    width: 160px; /* 固定幅 */
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: normal; /* 複数行表示可 */
+    word-break: break-word; /* 長い単語も折り返す */
+}
+
+.skill-bar-track {
+    flex: 1; /* ラベル横の残り幅いっぱいにバー */
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10B981 0%, #34D399 100%);
+    border-radius: 12px;
+    transition: width 0.8s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+}
+
+.skill-bar-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Result Section */
+.result-section {
+    animation: fadeInUp 0.5s ease;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.result-header h2 {
+    font-size: 1.8rem;
+    color: #1F2937;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.result-header h2 i {
+    color: #10B981;
+}
+
+.result-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.result-content {
+    margin-bottom: 1.5rem;
+}
+
+.generated-text {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #374151;
+    padding: 1.5rem;
+    background: #F9FAFB;
+    border-radius: 12px;
+    border-left: 4px solid #3B82F6;
+    white-space: pre-wrap;
+    min-height: 200px;
+}
+
+.result-meta {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #E5E7EB;
+}
+
+.char-count {
+    color: #6B7280;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.char-count i {
+    color: #3B82F6;
+}
+
+.result-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.result-actions button {
+    flex: 1;
+}
+
+/* Used Experiences */
+.used-experiences {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.used-experiences h3 {
+    font-size: 1.3rem;
+    color: #1F2937;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.experiences-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.experience-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #F3F4F6;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.experience-badge:hover {
+    background: #E5E7EB;
+    transform: translateX(4px);
+}
+
+.experience-badge-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.experience-badge-content {
+    flex: 1;
+}
+
+.experience-badge-title {
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 0.25rem;
+}
+
+.experience-badge-category {
+    font-size: 0.85rem;
+    color: #6B7280;
+}
+
+/* Tips Card */
+.tips-card {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tips-card h3 {
+    font-size: 1.3rem;
+    color: #92400E;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tips-list li {
+    padding: 0.75rem 0;
+    padding-left: 1.5rem;
+    color: #78350F;
+    position: relative;
+    line-height: 1.6;
+}
+
+.tips-list li:before {
+    content: "💡";
+    position: absolute;
+    left: 0;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+}
+
+.spinner-large {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1.5rem;
+}
+
+.loading-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.loading-subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .settings-section {
+        grid-template-columns: 1fr;
+    }
+
+    #insightsContent {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .skill-bar-label {
+        width: 120px; /* モバイル用に調整 */
+        font-size: 0.85rem;
+    }
+}
+
+/* 選択禁止 */
+.header,
+.nav-desktop,
+.nav-mobile,
+.hero,
+.empty-state,
+.settings-card,
+.insights-card,
+.tips-card,
+.loading-overlay,
+.result-header h2,
+.result-actions button,
+.btn {
+    user-select: none;
+}
+
+/* 選択可能 */
+.generated-text,
+.used-experiences .experience-badge-title,
+.used-experiences .experience-badge-category {
+    user-select: text;
+}
